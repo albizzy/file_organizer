@@ -1,5 +1,8 @@
+# file_organizer/organizer.py
+
 import os
 import shutil
+import argparse
 
 def scan_directory(src_dir):
     file_types = {
@@ -48,8 +51,11 @@ def organize_files(src_dir):
     print("Files organized successfully.")
 
 def main():
-    src_dir = "C:\\path\\to\\project" # keep note of the sepators used
-    organize_files(src_dir)
+    parser = argparse.ArgumentParser(description='Organize files in a directory based on their extensions.')
+    parser.add_argument('src_dir', type=str, help='The source directory to organize')
+    args = parser.parse_args()
+    
+    organize_files(args.src_dir)
 
 if __name__ == "__main__":
     main()
